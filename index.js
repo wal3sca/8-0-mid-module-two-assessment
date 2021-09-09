@@ -57,8 +57,9 @@ function getAllMovieTitles(movies) {
  *  checkIfAnyMovieHasRating(movies, "R");
  *  //> false
  */
-function checkIfAnyMovieHasRating(movies) {
-  // return movies.some((movie) =>
+function checkIfAnyMovieHasRating(movies, ratings = "G") {
+ error(movies)
+ return movies.some(movie => movie.rated === ratings)
 }
 
 /**
@@ -123,7 +124,7 @@ function findById(movies, id) {
 function filterByGenre(movies, genre) {
   let foundMovies = []
   const result = movies.filter((movie) => movie.genre === movie.album)
-
+  
   for (let movie of movies) {
     
     let lowGenres = movie.genre.toLowerCase()
@@ -139,6 +140,7 @@ function filterByGenre(movies, genre) {
   } 
   return foundMovies
 }
+
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
